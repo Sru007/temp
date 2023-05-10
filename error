@@ -2,9 +2,8 @@ Past errors below
 Could not communicate to Elasticsearch, resetting connection and trying again. [401] {"error":{"root_cause":[{"type":"security_exception","reason":"missing authentication credentials for REST request [/]","header":{"WWW-Authenticate":["Basic realm=\"security\" charset=\"UTF-8\"","Bearer realm=\"security\"","ApiKey"]}}],"type":"security_exception","reason":"missing authentication credentials for REST request [/]","header":{"WWW-Authenticate":["Basic realm=\"security\" charset=\"UTF-8\"","Bearer realm=\"security\"","ApiKey"]}},"status":401}
 2023-05-10 12:02:06 +0530 [warn]: #0 Remaining retry: 14. Retry to communicate after 2 second(s).
 
-<filter your_log_tag>
-  @type grok
-  <grok>
-     %{GREEDYDATA:message}
-  </grok>
+  @type parser
+  key_name message
+  format grok
+  grok_pattern %{GREEDYDATA:message}
 </filter>
